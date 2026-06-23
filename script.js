@@ -110,16 +110,25 @@ setInterval(() => {
     }
 }, 16000);
 
-// Simulator Drag/Swipe Events
+// Simulator Drag/Swipe Events — mouse
 phoneTrackpad.addEventListener('mousedown', startTrackpadDrag);
 window.addEventListener('mousemove', moveTrackpadDrag);
 window.addEventListener('mouseup', stopTrackpadDrag);
 
+// Simulator Drag/Swipe Events — touch (non-passive so we can preventDefault inside the phone)
 phoneTrackpad.addEventListener('touchstart', (e) => {
     startTrackpadDrag(e);
-}, { passive: true });
-window.addEventListener('touchmove', moveTrackpadDrag, { passive: false });
-window.addEventListener('touchend', stopTrackpadDrag);
+    // Prevent the page from scrolling while interacting with the phone trackpad
+    e.preventDefault();
+}, { passive: false });
+
+phoneTrackpad.addEventListener('touchmove', (e) => {
+    moveTrackpadDrag(e);
+    e.preventDefault();
+}, { passive: false });
+
+phoneTrackpad.addEventListener('touchend', stopTrackpadDrag);
+phoneTrackpad.addEventListener('touchcancel', stopTrackpadDrag);
 
 resetSimBtn.addEventListener('click', resetSimulator);
 
