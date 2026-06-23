@@ -192,14 +192,20 @@ function triggerSwipeUp() {
     // Update UI Counter
     scrollCounter.textContent = `SCROLL: ${String(scrollCount).padStart(2, '0')} / ${totalScrolls}`;
     
-    // Update Projection video current time randomly to simulate new content
+    // Update Projection video — advance time to simulate new content
     if (projectionVideo) {
+        projectionVideo.style.opacity = "0.7";
+        // Swipe is a user gesture — attempt unmuted play
         projectionVideo.muted = false;
-        projectionVideo.volume = 0.6; // Ensure audible sound
-        if (projectionVideo.readyState >= 2) {
-            projectionVideo.style.opacity = "0.7";
-            projectionVideo.play().catch(() => {});
-            projectionVideo.currentTime = (projectionVideo.currentTime + 8.5) % projectionVideo.duration;
+        projectionVideo.volume = 0.6;
+        projectionVideo.currentTime = (projectionVideo.currentTime + 8.5) % (projectionVideo.duration || 60);
+        const playPromise = projectionVideo.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(() => {
+                // Mobile blocked unmuted audio — fallback to muted play
+                projectionVideo.muted = true;
+                projectionVideo.play().catch(() => {});
+            });
         }
     }
     
