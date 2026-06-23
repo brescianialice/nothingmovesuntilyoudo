@@ -1,0 +1,310 @@
+:root {
+    --bg-color: #000000; /* Pure black, identical to Instagram and 'Senza titolo 5' */
+    --text-color: #ffffff; /* Stark white */
+    --text-dim: #a8a8a8; /* Instagram gray */
+    --text-deep-dim: #737373; /* Dark gray for secondary details */
+    --accent-green: #ffffff; /* Clean white for active pairing */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent; /* Smooth mobile interaction */
+}
+
+body, html {
+    background: var(--bg-color);
+    color: var(--text-color);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; /* Clean native Instagram fonts */
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: fixed; /* Prevents bounce scroll on iOS */
+}
+
+/* Touch Canvas Container (Instagram-style minimal dark canvas) */
+#touch-canvas {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    background: #000000;
+    touch-action: none; /* Block default system gestures */
+}
+
+.controller-content {
+    width: 85%;
+    max-width: 320px;
+    text-align: center;
+    z-index: 5;
+}
+
+/* Room Input Section (when unpaired - elegant Instagram log-in layout) */
+#room-input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    transition: opacity 0.5s ease;
+}
+
+.controller-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 0.15rem;
+    text-transform: lowercase; /* Lowercase modern branding */
+    margin-bottom: 0.8rem;
+    color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.controller-instruction {
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.05rem;
+    line-height: 1.5;
+    color: var(--text-dim);
+    margin-bottom: 2.2rem;
+}
+
+#room-input {
+    background: #121212; /* Instagram dark input background */
+    border: 1px solid #262626; /* Stark subtle Instagram border */
+    color: #ffffff;
+    padding: 0.8rem 1rem;
+    width: 100%;
+    font-family: monospace;
+    font-size: 0.9rem;
+    letter-spacing: 0.08rem;
+    text-align: center;
+    margin-bottom: 1.2rem;
+    border-radius: 6px;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+#room-input:focus {
+    border-color: #555555;
+    background: #1a1a1a;
+}
+
+#connect-btn {
+    background: #ffffff; /* stark white connect button */
+    border: none;
+    color: #000000; /* Black text */
+    padding: 0.75rem 2rem;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+#connect-btn:active {
+    background: #cccccc;
+    transform: scale(0.98);
+}
+
+/* Active Control Screen (Paired layout - minimal Instagram feed touchpad) */
+#active-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease;
+}
+
+.swipe-hint-indicator {
+    margin-bottom: 1.5rem;
+    color: var(--text-dim);
+    animation: bounce-up-instagram 1.8s infinite ease-in-out;
+}
+
+.arrow-up {
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke: #ffffff;
+}
+
+@keyframes bounce-up-instagram {
+    0%, 100% { transform: translateY(0); opacity: 0.35; }
+    50% { transform: translateY(-12px); opacity: 0.95; }
+}
+
+#instruction-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.06rem;
+    text-transform: lowercase; /* Lowercase aesthetic */
+    color: #ffffff;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.haptic-pulsar {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #ffffff;
+    margin-top: 2rem;
+    animation: pulse-ring-instagram 2s infinite cubic-bezier(0.215, 0.610, 0.355, 1);
+}
+
+@keyframes pulse-ring-instagram {
+    0% { transform: scale(0.8); opacity: 0.5; }
+    100% { transform: scale(10); opacity: 0; }
+}
+
+/* Top Status Bar */
+#status-bar {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    font-family: monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.05rem;
+    z-index: 10;
+}
+
+.status-lbl {
+    color: var(--text-deep-dim);
+    margin-right: 5px;
+    text-transform: uppercase;
+}
+
+.room-lbl {
+    color: #ffffff;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.conn-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    margin-left: auto;
+    transition: background-color 0.5s ease;
+}
+
+.conn-dot.connected {
+    background-color: #ffffff; /* White dot when connected */
+}
+
+.conn-dot.disconnected {
+    background-color: #333333; /* Dark dot when disconnected */
+}
+
+/* Bottom Stats footer */
+#footer-status {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: center;
+    font-family: monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.08rem;
+    color: var(--text-deep-dim);
+    z-index: 10;
+}
+
+/* Minimal clean drag feedback ripples */
+#ripple-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.ripple-dot {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    transform: translate(-50%, -50%) scale(1);
+    animation: fade-ripple-instagram 0.5s forwards ease-out;
+}
+
+@keyframes fade-ripple-instagram {
+    0% { transform: translate(-50%, -50%) scale(0.6); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(2.2); opacity: 0; }
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Poetic low-contrast floating whispers styled like Instagram minimalist typography */
+.poetic-phrase-container {
+    position: absolute;
+    bottom: 24%; /* Floating elegantly under the active swipe controls */
+    left: 8%;
+    right: 8%;
+    text-align: center;
+    pointer-events: none;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 55px;
+}
+
+.poetic-phrase-text {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 0.76rem;
+    font-weight: 300;
+    line-height: 1.6;
+    letter-spacing: 0.03rem;
+    color: rgba(255, 255, 255, 0.38); /* Low-contrast minimal gray text */
+    text-transform: lowercase; /* Clean, modern lowercase lettering */
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 1.2s cubic-bezier(0.19, 1, 0.22, 1), transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.poetic-phrase-text.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Final state when scrolls are finished and phone blocks */
+#touch-canvas.final-state .swipe-hint-indicator,
+#touch-canvas.final-state .haptic-pulsar,
+#touch-canvas.final-state #poetic-overlay,
+#touch-canvas.final-state #status-bar,
+#touch-canvas.final-state #footer-status {
+    display: none !important;
+}
+
+#touch-canvas.final-state #instruction-label {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 0.18rem;
+    text-transform: uppercase;
+    color: #ffffff;
+    opacity: 1 !important;
+    line-height: 1.4;
+    max-width: 280px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+}

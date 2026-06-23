@@ -1,0 +1,1367 @@
+/* ==========================================================================
+   LOCAL FONTS (CLASH DISPLAY)
+   ========================================================================== */
+
+@font-face {
+    font-family: 'ClashDisplay';
+    src: url('font/ClashDisplay-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ClashDisplay';
+    src: url('font/ClashDisplay-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ClashDisplay';
+    src: url('font/ClashDisplay-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ==========================================================================
+   DESIGN SYSTEM & VARIABLES
+   ========================================================================== */
+
+:root {
+    /* Fonts */
+    --font-heading: 'ClashDisplay', 'Inter', system-ui, -apple-system, sans-serif;
+    --font-body: 'ClashDisplay', 'Inter', system-ui, -apple-system, sans-serif;
+    --font-mono: 'Space Mono', monospace;
+
+    /* Transitions */
+    --transition-smooth: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --transition-quick: all 0.2s ease-out;
+
+    /* Theme-specific tokens (Default: Dark Gallery) */
+    --color-bg: #000000;
+    --color-bg-offset: #0e0e0e;
+    --color-bg-card: #121212;
+    --color-text: #f5f5f5;
+    --color-text-offset: #a0a0a0;
+    --color-accent: #ffffff;
+    --color-border: #222222;
+    --color-overlay: rgba(0, 0, 0, 0.7);
+    --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="light"] {
+    /* Light Theme (Paper / Editorial) */
+    --color-bg: #faf9f6; /* Warm Ivory Paper */
+    --color-bg-offset: #f4f3ee;
+    --color-bg-card: #ffffff;
+    --color-text: #111111; /* Charcoal Ink */
+    --color-text-offset: #666666;
+    --color-accent: #000000;
+    --color-border: #e0deda;
+    --color-overlay: rgba(250, 249, 246, 0.6);
+    --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* ==========================================================================
+   RESET & BASICS
+   ========================================================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    background-color: var(--color-bg);
+}
+
+body {
+    font-family: var(--font-body);
+    font-weight: 300;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.62;
+    letter-spacing: -0.01em;
+    overflow-x: hidden;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+}
+
+
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-text-offset);
+}
+
+/* ==========================================================================
+   TACTILE THEME SWITCHER
+   ========================================================================== */
+
+.theme-toggle {
+    position: fixed;
+    top: 30px;
+    right: 40px;
+    background: transparent;
+    border: 1px solid var(--color-text-offset);
+    padding: 8px 16px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--color-text);
+    cursor: pointer;
+    z-index: 900;
+    letter-spacing: 0.1em;
+    transition: var(--transition-quick);
+}
+
+.theme-toggle:hover {
+    border-color: var(--color-accent);
+    background-color: var(--color-text);
+    color: var(--color-bg);
+}
+
+/* ==========================================================================
+   HERO / COVER SECTION
+   ========================================================================== */
+
+.hero-section {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 8vw;
+    overflow: hidden;
+}
+
+.video-bg-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.video-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%) contrast(1.15) brightness(0.4);
+    opacity: 0.85;
+    transition: filter 0.5s ease;
+}
+
+[data-theme="light"] .video-bg {
+    filter: grayscale(100%) contrast(0.95) brightness(1.2);
+    opacity: 0.25;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent 60%, var(--color-bg) 100%);
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 5vh;
+}
+
+.academic-tag {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-text-offset);
+    letter-spacing: 0.15em;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.academic-tag .separator {
+    margin: 0 10px;
+    font-size: 0.9rem;
+}
+
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: clamp(3.5rem, 8vw, 7.5rem);
+    line-height: 0.92;
+    font-weight: 700;
+    color: var(--color-accent);
+    letter-spacing: -0.04em;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+}
+
+.hero-subtitle {
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+    color: var(--color-text-offset);
+    max-width: 600px;
+    line-height: 1.45;
+}
+
+.hero-scroll-indicator {
+    position: absolute;
+    bottom: 4vh;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--color-text-offset);
+    letter-spacing: 0.12em;
+}
+
+.scroll-arrow {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-8px);
+    }
+    60% {
+        transform: translateY(-4px);
+    }
+}
+
+/* ==========================================================================
+   SECTIONS GENERAL LAYOUT
+   ========================================================================== */
+
+.section-container {
+    padding: 12vh 8vw;
+    border-bottom: 1px solid var(--color-border);
+    position: relative;
+}
+
+.dark-strip {
+    background-color: var(--color-bg-offset);
+    transition: background-color 0.5s ease;
+}
+
+.editorial-heading {
+    font-family: var(--font-heading);
+    font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+    line-height: 1.1;
+    font-weight: 700;
+    color: var(--color-accent);
+    letter-spacing: -0.02em;
+    margin-bottom: 2rem;
+}
+
+.inline-title {
+    margin-bottom: 1.5rem;
+}
+
+.block-title {
+    margin-bottom: 3.5rem;
+    text-transform: uppercase;
+}
+
+.text-column p {
+    font-size: 1.06rem;
+    font-weight: 300;
+    line-height: 1.7;
+    margin-bottom: 1.8rem;
+    color: var(--color-text);
+    text-align: justify;
+}
+
+/* ==========================================================================
+   SECTION 1: EDITORIAL ESSAY
+   ========================================================================== */
+
+.section-layout-editorial {
+    display: grid;
+    grid-template-columns: 1.1fr 1.9fr;
+    gap: 8vw;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.lead-paragraph {
+    font-size: 1.25rem !important;
+    line-height: 1.6 !important;
+    font-weight: 300 !important;
+    color: var(--color-accent) !important;
+}
+
+.drop-cap {
+    font-family: var(--font-heading);
+    float: left;
+    font-size: 4.8rem;
+    line-height: 0.8;
+    padding-top: 4px;
+    padding-right: 12px;
+    color: var(--color-accent);
+}
+
+.quote-card {
+    border-left: 2px solid var(--color-accent);
+    padding: 1.5rem 0 1.5rem 2rem;
+    margin: 3rem 0;
+}
+
+.quote-text {
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    line-height: 1.5;
+    font-style: italic;
+    color: var(--color-accent);
+    font-weight: 300;
+}
+
+/* ==========================================================================
+   SECTION 2: FLIPBOOK INTERACTION
+   ========================================================================== */
+
+.simulator-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.simulator-intro {
+    margin-bottom: 3vh;
+}
+
+/* Simulator Layout */
+.interactive-simulator-container {
+    display: flex;
+    gap: 4vw;
+    justify-content: center;
+    align-items: stretch;
+    margin: 2rem 0 4rem 0;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.simulator-device {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1.2;
+    min-width: 320px;
+}
+
+.simulator-device.device-controller {
+    flex: 0.8;
+    min-width: 280px;
+}
+
+.device-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    color: var(--color-text-offset);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+/* Projection Screen / Desktop Monitor Mockup */
+.monitor-frame {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.monitor-screen {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border: 1px solid var(--color-border);
+    background-color: #000000;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-subtle);
+    transition: border-color 0.5s ease;
+}
+
+.monitor-screen video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    opacity: 0.35;
+    transition: opacity 0.5s ease;
+}
+
+.projection-shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.95);
+    pointer-events: none;
+    z-index: 5;
+}
+
+.projection-overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 85%;
+    text-align: center;
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: clamp(0.9rem, 2vw, 1.4rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+    z-index: 10;
+    pointer-events: none;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+    transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.projection-overlay-text.visible {
+    opacity: 0.9;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.projection-dark-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    opacity: 0;
+    z-index: 20;
+    pointer-events: none;
+    transition: opacity 9s linear;
+}
+
+.projection-dark-overlay.fading {
+    opacity: 1;
+}
+
+.monitor-stand {
+    width: 40px;
+    height: 25px;
+    background-color: var(--color-bg-card);
+    border-left: 1px solid var(--color-border);
+    border-right: 1px solid var(--color-border);
+    transition: background-color 0.5s ease, border-color 0.5s ease;
+}
+
+.monitor-base {
+    width: 140px;
+    height: 8px;
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 2px 2px 0 0;
+    transition: background-color 0.5s ease, border-color 0.5s ease;
+}
+
+/* Controller Screen / Smartphone Mockup */
+.phone-frame {
+    width: 260px;
+    height: 520px;
+    border: 6px solid var(--color-border);
+    border-radius: 36px;
+    background-color: var(--color-bg);
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-subtle);
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.5s ease, background-color 0.5s ease;
+}
+
+.phone-screen {
+    flex: 1;
+    background-color: #060606;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    cursor: grab;
+    user-select: none;
+    transition: background-color 0.5s ease;
+}
+
+.phone-screen:active {
+    cursor: grabbing;
+}
+
+.phone-notch {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 96px;
+    height: 16px;
+    background-color: var(--color-border);
+    border-radius: 0 0 12px 12px;
+    z-index: 50;
+    transition: background-color 0.5s ease;
+}
+
+.controller-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 24px 18px 18px 18px;
+    z-index: 10;
+    justify-content: space-between;
+    pointer-events: none; /* Let drag events pass to phone-screen */
+}
+
+.connection-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    color: var(--color-text-offset);
+    letter-spacing: 0.05em;
+    font-weight: 700;
+}
+
+.status-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: #00ff66;
+}
+
+.status-dot.pulsing {
+    animation: status-pulse 1.5s infinite alternate;
+}
+
+@keyframes status-pulse {
+    0% { opacity: 0.3; transform: scale(0.9); }
+    100% { opacity: 1; transform: scale(1.1); }
+}
+
+.trackpad-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 15px 0;
+    border: 1px dashed var(--color-border);
+    border-radius: 12px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.phone-screen:active .trackpad-area {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.swipe-indicator {
+    font-size: 1.8rem;
+    color: var(--color-text-offset);
+    animation: swipe-bounce 2s infinite;
+}
+
+@keyframes swipe-bounce {
+    0%, 100% { transform: translateY(5px); opacity: 0.3; }
+    50% { transform: translateY(-5px); opacity: 0.8; }
+}
+
+.trackpad-instructions {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    color: var(--color-text-offset);
+    text-align: center;
+    margin-top: 10px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.controller-stats {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    color: var(--color-text-offset);
+    letter-spacing: 0.05em;
+    border-top: 1px solid var(--color-border);
+    padding-top: 10px;
+    transition: border-color 0.5s ease;
+}
+
+/* Floating Whispers on Phone Screen */
+.whisper-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 30;
+    overflow: hidden;
+}
+
+.whisper-text {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.18);
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    line-height: 1.3;
+    font-style: italic;
+    white-space: normal;
+    width: 80%;
+    pointer-events: none;
+    animation: whisper-float 8s linear forwards;
+}
+
+@keyframes whisper-float {
+    0% { transform: translateY(110%) scale(0.95); opacity: 0; }
+    15% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { transform: translateY(-30px) scale(1.02); opacity: 0; }
+}
+
+/* Touch ripples inside phone trackpad */
+.ripple-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 20;
+}
+
+.ripple-ring {
+    position: absolute;
+    border: 1px solid var(--color-accent);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    animation: ripple-out 0.6s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+    opacity: 0.7;
+}
+
+@keyframes ripple-out {
+    0% { width: 0; height: 0; opacity: 0.7; }
+    100% { width: 140px; height: 140px; opacity: 0; }
+}
+
+/* Phone UI Themes & State Overrides */
+[data-theme="light"] .phone-screen {
+    background-color: #faf9f6;
+}
+
+[data-theme="light"] .whisper-text {
+    color: rgba(0, 0, 0, 0.22);
+}
+
+.phone-screen.locked {
+    cursor: not-allowed;
+}
+
+.phone-screen.locked .swipe-indicator {
+    animation: none;
+    color: #ff0033;
+}
+
+.phone-screen.locked .trackpad-area {
+    border-color: #ff0033;
+}
+
+/* Legend and reset button styles */
+.simulator-legend {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--color-border);
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    transition: border-color 0.5s ease;
+}
+
+.legend-item {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: var(--color-text-offset);
+    max-width: 580px;
+}
+
+.legend-key {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    color: var(--color-accent);
+    margin-right: 8px;
+}
+
+.action-btn {
+    background: transparent;
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent);
+    padding: 8px 18px;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: var(--transition-quick);
+    letter-spacing: 0.08em;
+}
+
+.action-btn:hover {
+    background-color: var(--color-accent);
+    color: var(--color-bg);
+}
+
+
+/* ==========================================================================
+   SECTION 3: PROCESS GRID (TECHNICAL DETAILS)
+   ========================================================================== */
+
+.process-sub-heading {
+    margin-bottom: 5rem;
+}
+
+.process-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4vw;
+    margin-bottom: 5rem;
+}
+
+.process-card {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-subtle);
+    transition: var(--transition-smooth);
+}
+
+.process-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-5px);
+}
+
+.card-num {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--color-text-offset);
+    margin-bottom: 1.5rem;
+}
+
+.card-title {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    line-weight: 1.2;
+    font-weight: 700;
+    color: var(--color-accent);
+    margin-bottom: 1.5rem;
+}
+
+.card-desc {
+    font-size: 0.95rem;
+    color: var(--color-text-offset);
+    line-height: 1.65;
+    margin-bottom: 2.5rem;
+}
+
+.card-image-holder {
+    width: 100%;
+    aspect-ratio: 4/3;
+    border: 1px solid var(--color-border);
+    margin-top: auto;
+    overflow: hidden;
+    position: relative;
+    background-color: #050505;
+}
+
+.card-image-holder img,
+.card-image-holder video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%) contrast(1.1);
+    transition: var(--transition-smooth);
+}
+
+.card-image-holder:hover img {
+    transform: scale(1.05);
+    filter: grayscale(0%) contrast(1);
+}
+
+/* Background preview loop specific settings */
+.bg-video-holder {
+    aspect-ratio: 16/9 !important; /* Force fit video aspect */
+}
+
+.card-video {
+    pointer-events: none;
+}
+
+.image-label {
+    position: absolute;
+    bottom: 12px;
+    left: 15px;
+    background-color: rgba(0, 0, 0, 0.85);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    padding: 3px 8px;
+    text-transform: uppercase;
+}
+
+/* Installation Gallery */
+.installation-gallery {
+    display: grid;
+    grid-template-columns: 1.2fr 1.8fr;
+    gap: 4vw;
+    margin-top: 4vw;
+}
+
+.gallery-item {
+    border: 1px solid var(--color-border);
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16/10;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%) contrast(1.05);
+    transition: var(--transition-smooth);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.03);
+    filter: grayscale(0%) contrast(1);
+}
+
+/* ==========================================================================
+   SECTION 4: LYRICS SECTION
+   ========================================================================== */
+
+.lyrics-section {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15vh 8vw;
+}
+
+.lyrics-bg-words {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    transform: translateY(-50%);
+    font-family: var(--font-heading);
+    font-size: clamp(8rem, 20vw, 24rem);
+    font-weight: 700;
+    color: var(--color-bg);
+    text-shadow: -1px -1px 0 var(--color-border), 1px -1px 0 var(--color-border), -1px 1px 0 var(--color-border), 1px 1px 0 var(--color-border);
+    opacity: 0.35;
+    z-index: 1;
+    pointer-events: none;
+    white-space: nowrap;
+    text-transform: uppercase;
+    overflow: hidden;
+    display: flex;
+}
+
+.marquee-track {
+    display: flex;
+    white-space: nowrap;
+    animation: marquee-scroll 40s linear infinite;
+}
+
+.marquee-track span {
+    padding-right: 4rem;
+}
+
+@keyframes marquee-scroll {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        transform: translate3d(-50%, 0, 0);
+    }
+}
+
+.lyrics-wrapper {
+    position: relative;
+    z-index: 10;
+    max-width: 1000px;
+    width: 100%;
+}
+
+.lyrics-heading {
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 5rem;
+    color: var(--color-accent);
+}
+
+.lyrics-cols {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8vw;
+}
+
+.lyrics-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.lyric-line {
+    font-family: var(--font-heading);
+    font-size: clamp(1.1rem, 2.2vw, 1.7rem);
+    line-height: 1.5;
+    margin-bottom: 1.2rem;
+    color: var(--color-text-offset);
+    transition: var(--transition-quick);
+}
+
+.lyric-line:hover {
+    color: var(--color-accent);
+    transform: translateX(5px);
+}
+
+.highlighted {
+    color: var(--color-accent);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-top: 2rem;
+}
+
+/* ==========================================================================
+   FOOTER / COLOPHON SECTION
+   ========================================================================== */
+
+.colophon-section {
+    background-color: var(--color-bg);
+    padding: 10vh 8vw 4vh 8vw;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--color-border);
+}
+
+.colophon-divider {
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-border);
+    margin-bottom: 6vh;
+}
+
+.colophon-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4vw;
+    margin-bottom: 8vh;
+}
+
+.colophon-info-block h4 {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    color: var(--color-text-offset);
+    margin-bottom: 1.5rem;
+}
+
+.colophon-info-block p {
+    font-size: 0.95rem;
+    color: var(--color-text);
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+.statement-block {
+    grid-column: span 1;
+    display: flex;
+    align-items: flex-start;
+}
+
+.statement-large {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    font-style: italic;
+    color: var(--color-accent);
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 4vh;
+    border-top: 1px solid var(--color-border);
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--color-text-offset);
+    letter-spacing: 0.05em;
+}
+
+/* ==========================================================================
+   RESPONSIVENESS / MEDIA QUERIES
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+    .section-layout-editorial {
+        grid-template-columns: 1fr;
+        gap: 4vh;
+    }
+    
+    .quote-card {
+        margin: 2rem 0;
+    }
+    
+    .process-steps-grid {
+        grid-template-columns: 1fr;
+        gap: 4vh;
+    }
+    
+    .colophon-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6vh;
+    }
+    
+    .theme-toggle {
+        top: 20px;
+        right: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 0 6vw;
+    }
+    
+    .section-container {
+        padding: 8vh 6vw;
+    }
+    
+    .flipbook-info {
+        grid-template-columns: 1fr;
+        gap: 2vh;
+    }
+    
+    .interactive-scrubber-container {
+        padding: 1.5rem;
+    }
+    
+    .installation-gallery {
+        grid-template-columns: 1fr;
+        gap: 4vh;
+    }
+    
+    .lyrics-cols {
+        grid-template-columns: 1fr;
+        gap: 6vh;
+    }
+    
+    .colophon-grid {
+        grid-template-columns: 1fr;
+        gap: 4vh;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        gap: 1.5vh;
+        align-items: flex-start;
+    }
+}
+
+/* ==========================================================================
+   SCROLL REVEAL & LYRICS ACTIVE LINE
+   ========================================================================== */
+
+.reveal-init {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 1s cubic-bezier(0.25, 0.8, 0.25, 1), transform 1s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.reveal-init.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.active-line {
+    color: var(--color-accent) !important;
+}
+
+/* ==========================================================================
+   SECTION 7: CODE ANALYSIS & VIBE CODING STYLES
+   ========================================================================== */
+
+.code-analysis-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+    margin-top: 4rem;
+}
+
+.code-analysis-card {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4vw;
+    align-items: center;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 5rem;
+}
+
+.code-analysis-card:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.spec-number {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--color-text-offset);
+    letter-spacing: 0.15em;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.analysis-text .card-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.analysis-text p {
+    font-size: 1rem;
+    color: var(--color-text-offset);
+    line-height: 1.65;
+    text-align: justify;
+}
+
+.code-editor-mock {
+    background-color: #0c0c0c;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: var(--shadow-subtle);
+    width: 100%;
+}
+
+.editor-bar {
+    background-color: #121212;
+    border-bottom: 1px solid var(--color-border);
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.editor-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--color-border);
+}
+
+.editor-dot:nth-child(1) { background-color: #ff5f56; }
+.editor-dot:nth-child(2) { background-color: #ffbd2e; }
+.editor-dot:nth-child(3) { background-color: #27c93f; }
+
+.editor-filename {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--color-text-offset);
+    margin-left: auto;
+    letter-spacing: 0.05em;
+}
+
+.code-editor-mock pre {
+    margin: 0;
+    padding: 20px;
+    overflow-x: auto;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    line-height: 1.55;
+    color: #e0e0e0;
+    text-align: left;
+}
+
+/* Light theme overrides for code editor */
+[data-theme="light"] .code-editor-mock {
+    background-color: #f7f6f3;
+    border-color: #d1cfc9;
+}
+
+[data-theme="light"] .editor-bar {
+    background-color: #ededeb;
+    border-bottom-color: #d1cfc9;
+}
+
+[data-theme="light"] .code-editor-mock pre {
+    color: #222222;
+}
+
+@media (max-width: 1024px) {
+    .code-analysis-card {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        padding-bottom: 4rem;
+    }
+}
+
+/* ==========================================================================
+   SITE FOOTER
+   ========================================================================== */
+
+.site-footer {
+    background-color: var(--color-bg-offset);
+    border-top: 1px solid var(--color-border);
+    padding: 5vh 8vw 4vh;
+    transition: background-color 0.5s ease, border-color 0.5s ease;
+}
+
+.footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    margin-bottom: 2.5rem;
+}
+
+.footer-title {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    letter-spacing: -0.03em;
+    color: var(--color-text);
+    line-height: 1;
+}
+
+.footer-author {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-offset);
+}
+
+.footer-divider {
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-border);
+    margin-bottom: 2rem;
+}
+
+.footer-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.footer-copy {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: var(--color-text);
+    text-transform: uppercase;
+}
+
+.footer-license {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.03em;
+    color: var(--color-text-offset);
+    line-height: 1.6;
+}
+
+.footer-license strong {
+    color: var(--color-text);
+    font-weight: 700;
+}
+
+.footer-link {
+    color: var(--color-text-offset);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+    color: var(--color-text);
+}
+
+.footer-academic {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+    color: var(--color-border);
+    text-transform: uppercase;
+    margin-top: 0.4rem;
+}
+
+[data-theme="light"] .footer-academic {
+    color: #c0bdb8;
+}
+

@@ -1,0 +1,675 @@
+:root {
+    --bg-color: #05010b; /* Deep nocturnal neon purple/black */
+    --text-color: #00f3ff; /* Electric neon cyan */
+    --text-dim: rgba(0, 243, 255, 0.45);
+    --text-deep-dim: rgba(0, 243, 255, 0.2);
+    --accent-red: #ff007f; /* Fuchsia punk pink */
+    --accent-blue: #094fb2; /* Bruised analog blue */
+    --accent-yellow: #fffb00; /* Neon yellow pop */
+    --glow-color: rgba(255, 0, 127, 0.08);
+    
+    --phone-width: 360px;
+    --phone-aspect: 9/16;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    background: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    cursor: none; /* Hide cursor for installation mode */
+}
+
+/* Monochromatic stark black void background */
+.void-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000000; /* Stark solid black matching 'Senza titolo 5' */
+    z-index: 0;
+    overflow: hidden;
+}
+
+/* Cathode Ray Tube Scanlines (Flickering slot-mask grid) */
+.scanlines {
+    display: none; /* Hide scanlines filter as per user request */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.20),
+        rgba(0, 0, 0, 0.20) 1px,
+        transparent 2px,
+        transparent 4px
+    );
+    pointer-events: none;
+    z-index: 10;
+    animation: crt-flicker 0.18s infinite;
+}
+
+@keyframes crt-flicker {
+    0% { opacity: 0.94; }
+    50% { opacity: 1.0; }
+    100% { opacity: 0.96; }
+}
+
+.crt-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        circle at 50% 50%,
+        rgba(0, 243, 255, 0.05) 0%,
+        transparent 80%
+    );
+    pointer-events: none;
+    z-index: 9;
+}
+
+/* Dynamic Animated film grain overlay (Fractal noise SVG) */
+.noise-grain {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    right: -50%;
+    bottom: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0.05; /* Balanced base TV static */
+    pointer-events: none;
+    z-index: 110; /* Overlays splash artwork, QR code, and final video feeds */
+    filter: grayscale(100%) contrast(180%) brightness(120%); /* 100% monochromatic TV snow static, absolutely no color */
+    animation: tv-glitch-grain 0.4s steps(8) infinite; /* Fast steps-based television sync signal glitching */
+    will-change: transform, clip-path, opacity;
+}
+
+/* Authentic CRT TV Signal Static & Horizontal Sync Hold Glitching */
+@keyframes tv-glitch-grain {
+    0%, 100% {
+        transform: translate(0, 0) scale(1) skewX(0deg);
+        clip-path: inset(0 0 0 0);
+        opacity: 0.05;
+    }
+    10% {
+        transform: translate(-1.5%, -2.5%) scale(1.04) skewX(2deg);
+        clip-path: inset(20% 0 50% 0); /* Horizontal static strip */
+        opacity: 0.12; /* Heavy burst of TV snow */
+    }
+    20% {
+        transform: translate(2%, 1.5%) scale(1.02) skewX(-3deg);
+        clip-path: inset(82% 0 3% 0);
+        opacity: 0.06;
+    }
+    30% {
+        transform: translate(-2.5%, -3%) scale(1.08) skewX(5deg);
+        clip-path: inset(45% 0 15% 0); /* Sync displacement strip */
+        opacity: 0.16;
+    }
+    40% {
+        transform: translate(1.5%, 2%) scale(1.01) skewX(-1deg);
+        clip-path: inset(5% 0 85% 0);
+        opacity: 0.04;
+    }
+    50% {
+        transform: translate(-3%, 3.5%) scale(1.06) skewX(7deg);
+        clip-path: inset(10% 0 78% 0); /* Electrical interference bar */
+        opacity: 0.18;
+    }
+    65% {
+        transform: translate(2.5%, -1.5%) scale(1.03) skewX(-4deg);
+        clip-path: inset(65% 0 25% 0);
+        opacity: 0.07;
+    }
+    75% {
+        transform: translate(-2%, -2%) scale(1.05) skewX(3deg);
+        clip-path: inset(35% 0 45% 0);
+        opacity: 0.11;
+    }
+    85% {
+        transform: translate(3%, 3%) scale(1.1) skewX(-6deg);
+        clip-path: inset(0% 0 92% 0); /* Extreme top signal tearing bar */
+        opacity: 0.22; /* Maximum flash of monochrome static */
+    }
+    95% {
+        transform: translate(-1%, -1%) scale(1) skewX(1deg);
+        clip-path: inset(72% 0 12% 0);
+        opacity: 0.06;
+    }
+}
+
+/* Active Stark Viewport (Classic minimal art gallery frame) */
+#projection-canvas {
+    position: relative;
+    width: var(--phone-width);
+    height: calc(100vh - 5vh); /* Accommodate the 5vh top void */
+    top: 5vh;
+    margin: 0 auto;
+    background: #000000;
+    border: 1px solid #ffffff; /* Classic stark white thin border */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.05); 
+    border-radius: 0; /* Sharp corners matching 'Senza titolo 5' */
+    z-index: 2;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Top 5vh void */
+.top-void {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5vh;
+    background: #000000;
+    z-index: 5;
+    border-bottom: 1px solid #ffffff; /* Clean white bottom divider */
+}
+
+/* Feed Container */
+#feed-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+    will-change: transform;
+}
+
+/* Items inside the Feed */
+.feed-item {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1.2s cubic-bezier(0.19, 1, 0.22, 1), transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #0f0322; /* Deep violet back */
+}
+
+.feed-item.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Distressed Video signals: Screen duotone blending! */
+.feed-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.85;
+    filter: brightness(0.9) contrast(1.3) saturate(1.7) hue-rotate(-5deg);
+    mix-blend-mode: screen; /* Blends natively with the deep violet background, producing a stunning post-punk duotone! */
+    transition: filter 0.8s ease, transform 0.5s ease;
+}
+
+/* Failed to load/Glitch state style */
+.feed-item.media-failed {
+    background: #080112;
+    border: 2px solid var(--accent-red);
+    box-shadow: inset 0 0 20px rgba(255, 0, 127, 0.15);
+}
+
+.media-failed-indicator {
+    text-align: center;
+    font-family: monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.15rem;
+    color: var(--accent-red);
+    text-transform: uppercase;
+    animation: pulse-failed 1.5s infinite alternate;
+}
+
+.media-failed-indicator svg {
+    margin-bottom: 10px;
+    opacity: 0.6;
+    filter: drop-shadow(0 0 8px var(--accent-red));
+}
+
+@keyframes pulse-failed {
+    0% { opacity: 0.4; transform: scale(0.98); }
+    100% { opacity: 1.0; transform: scale(1.02); }
+}
+
+/* Ghost phrase positioned absolutely over active video */
+.phrase-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+    pointer-events: none;
+    background: transparent;
+}
+
+/* Pure Floating Text Wrapper (Torn margins removed completely) */
+.phrase-wrapper {
+    width: 85%;
+    text-align: center;
+    padding: 0;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    position: relative;
+}
+
+/* The Distressed Sans-Serif Grotesque overlay: chromatic aberration! */
+.feed-item .phrase-text {
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 2.25rem; /* Large, contemporary grotesque */
+    font-weight: 800;  /* Extra Bold stampatello */
+    line-height: 1.2;
+    letter-spacing: 0.12rem; /* Wide tracking for modern architectural look */
+    color: #ffffff; /* High contrast white core */
+    opacity: 0;
+    transform: translateY(15px) scale(0.96);
+    /* 3D offset drop shadows in neon pink & cyan representing chromatic aberration */
+    text-shadow: 
+        3px 3px 0px var(--accent-red),  /* Fuchsia offset */
+        -3px -3px 0px var(--text-color),  /* Cyan offset */
+        0 0 6px rgba(255, 255, 255, 0.3);
+    filter: blur(0px);
+    transition: opacity 1.8s cubic-bezier(0.19, 1, 0.22, 1), transform 1.8s cubic-bezier(0.19, 1, 0.22, 1);
+    transition-delay: 0.8s; /* Soft, delicate delay for poetic crystallization over videos */
+    text-transform: uppercase; /* STAMPATELLO MAIUSCOLO */
+    text-align: center;
+}
+
+.feed-item.active .phrase-text {
+    opacity: 0.95;
+    transform: translateY(0) scale(1);
+}
+
+/* Soft typographic focus for the very final slides (Thin drift styling) */
+.italic-phrase {
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 2.0rem;
+    color: var(--accent-yellow); /* Yellow neon final goodnight */
+    text-shadow: 
+        2.5px 2.5px 0px var(--accent-red),
+        -2.5px -2.5px 0px var(--text-color);
+    opacity: 0.85;
+    letter-spacing: 0.25rem;
+}
+
+/* Splash Overlay styling (Exclusive Artwork backgrounds) */
+#splash-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../Senza%20titolo-5.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 1.5s cubic-bezier(0.19, 1, 0.22, 1), visibility 1.5s, background-image 0.25s ease-in-out;
+    cursor: default !important; /* Force pointer visibility for interactive splash screen */
+    /* Subtle ambient analog breathing distortion initially */
+    animation: splash-ambient-breathing 4s ease-in-out infinite alternate;
+    will-change: transform, filter;
+}
+
+#splash-overlay:hover {
+    background-image: url('../Senza%20titolo-52.jpg');
+    /* Strong analog TV warp deformation when mouse is hovering */
+    animation: splash-distortion-hover 0.5s steps(5) infinite alternate;
+}
+
+#splash-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Performance optimization: kill all glitch rendering once splash screen starts */
+#splash-overlay.hidden .noise-grain {
+    display: none !important;
+}
+
+/* Invisible full-screen interactive click trigger */
+.splash-click-trigger {
+    width: 100%;
+    height: 100%;
+    cursor: pointer !important;
+    z-index: 5;
+}
+
+/* High-performance background preloading to eliminate hover flicker */
+body::after {
+    content: url('../Senza%20titolo-52.jpg');
+    display: none;
+}
+
+/* SVG noise position must be absolute inside its parent overlay */
+#splash-overlay .noise-grain {
+    position: absolute;
+    z-index: 1;
+}
+
+/* Animations for artwork deformation */
+@keyframes splash-ambient-breathing {
+    0% {
+        transform: scale(1) skewX(0deg);
+        filter: contrast(100%) brightness(100%);
+    }
+    100% {
+        transform: scale(1.015) skewX(0.4deg);
+        filter: contrast(104%) brightness(102%);
+    }
+}
+
+@keyframes splash-distortion-hover {
+    0% {
+        transform: scale(1.02) skewX(-1.5deg) skewY(0.5deg) rotate(0.2deg);
+        filter: contrast(115%) brightness(105%);
+    }
+    33% {
+        transform: scale(1.04) skewX(2deg) skewY(-1deg) rotate(-0.3deg);
+        filter: contrast(130%) brightness(95%);
+    }
+    66% {
+        transform: scale(1.01) skewX(-2.5deg) skewY(1.2deg) rotate(0.4deg);
+        filter: contrast(122%) brightness(100%);
+    }
+    100% {
+        transform: scale(1.05) skewX(1.8deg) skewY(-0.8deg) rotate(-0.1deg);
+        filter: contrast(128%) brightness(98%);
+    }
+}
+
+/* Pairing Modal (Monochromatic stark B&W gallery style) */
+#pairing-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95); /* High-contrast black backdrop */
+    z-index: 120;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s cubic-bezier(0.19, 1, 0.22, 1), visibility 0.5s;
+    backdrop-filter: blur(5px);
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+#pairing-modal.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: #000000; /* Pure black core */
+    border: 3px double #ffffff; /* Stark gallery-style double white borders */
+    padding: 2.5rem;
+    border-radius: 0; /* Sharp industrial corners, absolutely no rounding */
+    width: 90%;
+    max-width: 420px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 0 35px rgba(255, 255, 255, 0.05); /* Subtle white halo */
+}
+
+.close-modal-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    color: #666666;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-modal-btn:hover {
+    color: #ffffff;
+    text-shadow: 0 0 8px #ffffff;
+}
+
+.modal-content h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.22rem; /* Wide tracking graphic style */
+    font-size: 1.15rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    color: #ffffff; /* Stark white */
+}
+
+.modal-content p {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.05rem;
+    line-height: 1.6;
+    color: #aaaaaa; /* Neutral medium gray */
+    margin-bottom: 2rem;
+}
+
+#qrcode {
+    background: #ffffff;
+    padding: 12px;
+    display: inline-block;
+    border-radius: 0; /* Sharp corner */
+    margin-bottom: 1.5rem;
+    border: 1px solid #ffffff;
+}
+
+#qrcode img {
+    display: block;
+}
+
+.room-code-info {
+    font-family: monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.15rem;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.06);
+    padding: 0.6rem 1.2rem;
+    border-radius: 0; /* Sharp corner */
+    display: inline-block;
+    border: 1px solid #ffffff; /* Sharp white border */
+    margin-bottom: 1.5rem;
+}
+
+.room-code-info span {
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.pairing-tip {
+    font-family: monospace;
+    font-size: 0.6rem !important;
+    letter-spacing: 0.08rem !important;
+    margin-bottom: 0 !important;
+    color: #555555 !important;
+    opacity: 0.85;
+}
+
+/* Pairing Toggle Button (Floating Retro stark black) */
+#pairing-toggle-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid #444444;
+    color: #888888;
+    width: 44px;
+    height: 44px;
+    border-radius: 0; /* Sharp corner */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 40;
+    transition: all 0.3s ease;
+    opacity: 0.7;
+}
+
+#pairing-toggle-btn:hover {
+    opacity: 1;
+    border-color: #ffffff;
+    color: #ffffff;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+}
+
+/* System Status Info (Monospace white/gray) */
+#system-status {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-family: monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.15rem;
+    color: #444444;
+    z-index: 40;
+    text-transform: uppercase;
+}
+
+.status-badge {
+    font-weight: bold;
+    margin-left: 5px;
+    transition: color 0.3s ease;
+}
+
+.status-badge.connected {
+    color: #ffffff;
+    text-shadow: 0 0 5px #ffffff;
+}
+
+.status-badge.disconnected {
+    color: #666666;
+    text-shadow: none;
+}
+
+/* Dynamic screen effects programmatically triggered by controller.js progression */
+.feed-item.heavy-glitch video {
+    animation: jitter-clip 0.15s infinite steps(2);
+    filter: invert(0.05) hue-rotate(-20deg) saturate(1.8) brightness(1.15) contrast(1.3);
+}
+
+@keyframes jitter-clip {
+    0% { transform: translate(1.5px, -1.5px) skewX(2deg); }
+    50% { transform: translate(-3px, 3px) skewX(-1deg); }
+    100% { transform: translate(0px, 0px); }
+}
+
+/* Global fade to black for the final stage */
+body.sleep-fade-out {
+    animation: black-fade-animation 8s forwards cubic-bezier(0.5, 0, 0.5, 1);
+}
+
+@keyframes black-fade-animation {
+    0% { filter: brightness(1) blur(0px); }
+    100% { filter: brightness(0) blur(10px); background: #000000; }
+}
+
+
+
+/* Dynamic IP Override panel inside pairing modal */
+.ip-override-container {
+    margin-top: 1.6rem;
+    padding-top: 1.4rem;
+    border-top: 1px dashed #ffffff; /* Stark white dashed divider */
+    text-align: left;
+}
+
+.override-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.65rem !important;
+    color: #888888 !important; /* Stark B&W theme */
+    margin-bottom: 0.6rem !important;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    line-height: 1.4;
+}
+
+.override-inputs {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+}
+
+#ip-override-input {
+    background: #000000;
+    border: 1px solid #ffffff; /* Stark white border */
+    color: #ffffff;
+    font-family: monospace;
+    font-size: 0.8rem;
+    padding: 8px 12px;
+    border-radius: 0; /* Sharp industrial corners */
+    outline: none;
+    flex-grow: 1;
+}
+
+#ip-override-input:focus {
+    border-color: #ffffff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
+}
+
+#ip-override-btn {
+    background: transparent;
+    border: 1px solid #ffffff; /* Stark B&W button */
+    color: #ffffff;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.72rem;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 0; /* Sharp corner */
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+#ip-override-btn:hover {
+    background: #ffffff;
+    color: #000000;
+    transform: scale(1.03);
+}
+
+/* Responsive adjustment if viewports are too narrow */
+@media (max-width: 500px) {
+    #projection-canvas {
+        width: 100vw;
+        height: calc(100vh - 5vh);
+        box-shadow: none;
+        border-radius: 0;
+    }
+}

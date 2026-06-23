@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Nothing Moves Until You Do — Controller</title>
+    
+    <!-- Space Grotesk (geometric New Wave sans) and Outfit fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700;800&family=Outfit:wght@100;200;300;400&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/controller.css">
+</head>
+<body>
+
+    <!-- Main Touch Input Area -->
+    <main id="touch-canvas">
+        
+        <!-- Ripple overlay where custom touch feedback will be drawn -->
+        <div id="ripple-container"></div>
+        
+        <!-- Poetic overlay for low-contrast floating whispers -->
+        <div id="poetic-overlay" class="poetic-phrase-container"></div>
+        
+        <div class="controller-content">
+            <!-- Dynamic Room Pairing UI (visible only if room is missing or disconnected) -->
+            <div id="room-input-container" class="hidden">
+                <h1 class="controller-title">Nothing Moves</h1>
+                <p class="controller-instruction">Enter the Room ID displayed on the projection screen:</p>
+                <input type="text" id="room-input" placeholder="e.g. night-sleep-123" autocomplete="off" spellcheck="false">
+                <button id="connect-btn">Connect</button>
+            </div>
+
+            <!-- Active Controller State (No buttons, pure instruction) -->
+            <div id="active-panel">
+                <div class="swipe-hint-indicator">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="1" fill="none" class="arrow-up">
+                        <line x1="12" y1="19" x2="12" y2="5"></line>
+                        <polyline points="5 12 12 5 19 12"></polyline>
+                    </svg>
+                </div>
+                <p id="instruction-label" class="fade-instruction">swipe up to scroll</p>
+                <div class="haptic-pulsar"></div>
+            </div>
+        </div>
+
+        <!-- Connection and Feed Sync Indicators (Very tiny, low contrast) -->
+        <header id="status-bar">
+            <span class="status-lbl">PAIRING:</span>
+            <span id="room-tag" class="room-lbl">UNPAIRED</span>
+            <span id="conn-dot" class="conn-dot disconnected"></span>
+        </header>
+
+        <footer id="footer-status">
+            <span id="swipe-counter">SCROLLS: 0</span>
+        </footer>
+
+    </main>
+
+    <!-- External MQTT Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mqtt/4.3.7/mqtt.min.js"></script>
+    
+    <!-- Controller Logic Script -->
+    <script src="js/controller.js"></script>
+</body>
+</html>

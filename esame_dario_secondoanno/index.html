@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nothing Moves Until You Do — Projection</title>
+    
+    <!-- Space Grotesk (geometric New Wave sans) and handwritten punk fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700;800&family=Shadows+Into+Light&family=Patrick+Hand&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/projection.css">
+</head>
+<body>
+
+    <!-- Splash screen to unlock Web Audio API & video playback context -->
+    <div id="splash-overlay">
+        <div class="noise-grain"></div>
+        <div id="start-btn" class="splash-click-trigger"></div>
+    </div>
+
+    <!-- Background Void & CRT scanline overlays for nocturnal atmosphere -->
+    <div class="void-background"></div>
+    <div class="scanlines"></div>
+    <div class="crt-glow"></div>
+
+    <!-- Active Smartphone Projection viewport -->
+    <main id="projection-canvas">
+        <!-- 5vh void at the top -->
+        <div class="top-void"></div>
+
+        <!-- The scrolling Feed Container -->
+        <div id="feed-container">
+            <!-- Content (Videos & Text screens) will be dynamically managed by projection.js -->
+        </div>
+    </main>
+
+    <!-- Elegant pairing QR code module -->
+    <div id="pairing-modal">
+        <div class="modal-content">
+            <button class="close-modal-btn" id="close-modal-btn">×</button>
+            <h3>CONNETTI CONTROLLER</h3>
+            <p>Scansiona il codice con il telefono. Esegui swipe verticali per scorrere i video.<br><br><strong>Nota:</strong> Se usi la versione online su GitHub Pages, i dispositivi possono essere su reti diverse. Se usi la versione locale, devono essere sulla stessa rete Wi-Fi.</p>
+            <div id="qrcode"></div>
+            <div class="room-code-info">
+                ROOM ID: <span id="room-id-display">...</span>
+            </div>
+            
+            <!-- dynamic IP override input section to solve localhost mobile loading blockers -->
+            <div class="ip-override-container">
+                <p class="override-label"><strong>⚠️ SAFARI NON APRE LA PAGINA?</strong> Significa che l'IP nel QR Code non è corretto. Trova l'IP locale del computer (scrivi <code style="color: #ffffff; background: rgba(255,255,255,0.15); padding: 2px 4px; font-family: monospace;">ipconfig</code> nel prompt dei comandi di Windows) e inseriscilo qui per rigenerare il codice:</p>
+                <div class="override-inputs">
+                    <input type="text" id="ip-override-input" placeholder="es. 192.168.1.113" autocomplete="off" spellcheck="false">
+                    <button id="ip-override-btn">Genera</button>
+                </div>
+            </div>
+
+            <p class="pairing-tip">Premi <strong>[Q]</strong> sulla tastiera in qualsiasi momento per mostrare/nascondere questo pannello.</p>
+        </div>
+    </div>
+
+    <!-- Low opacity pairing toggle button for setup ease -->
+    <button id="pairing-toggle-btn" title="Toggle Pairing Panel">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+        </svg>
+    </button>
+
+    <!-- System Status Overlay (Operator Only - very faint monospace at the bottom) -->
+    <div id="system-status">
+        STATUS: INITIALIZING... <span id="mqtt-status" class="status-badge disconnected">OFFLINE</span>
+    </div>
+
+    <!-- External Libraries -->
+    <!-- MQTT.js for communication -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mqtt/4.3.7/mqtt.min.js"></script>
+    <!-- QRCode.js for generating QR code on the fly -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    
+    <!-- Narrative Controller Script -->
+    <script src="js/projection.js"></script>
+</body>
+</html>
