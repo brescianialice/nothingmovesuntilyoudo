@@ -1365,3 +1365,207 @@ h1, h2, h3, h4, h5, h6 {
     color: #c0bdb8;
 }
 
+/* ==========================================================================
+   MOBILE RESPONSIVE — 768px e inferiori
+   ========================================================================== */
+
+@media (max-width: 768px) {
+
+    /* --- Tipografia generale --- */
+    html { font-size: 15px; }
+
+    .hero-title {
+        font-size: clamp(2.8rem, 11vw, 4rem);
+        line-height: 0.95;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .editorial-heading {
+        font-size: clamp(1.8rem, 7vw, 2.8rem);
+    }
+
+    /* --- Pulsante tema: più piccolo e alto --- */
+    .theme-toggle {
+        top: 14px;
+        right: 14px;
+        padding: 6px 11px;
+        font-size: 0.65rem;
+    }
+
+    /* --- Hero scroll indicator --- */
+    .hero-scroll-indicator {
+        bottom: 3vh;
+    }
+
+    /* --- Sezioni container --- */
+    .section-container {
+        padding: 8vh 5vw;
+    }
+
+    /* --- Layout editoriale: colonna singola --- */
+    .section-layout-editorial {
+        grid-template-columns: 1fr;
+        gap: 5vh;
+    }
+
+    /* --- Drop cap più piccola --- */
+    .drop-cap {
+        font-size: 3.5rem;
+        padding-right: 8px;
+    }
+
+    /* --- Quote card --- */
+    .quote-text {
+        font-size: 1.1rem;
+    }
+
+    /* --- Simulator: colonna singola --- */
+    .interactive-simulator-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 4vh;
+    }
+
+    .simulator-device {
+        min-width: unset;
+        width: 100%;
+        flex: unset;
+    }
+
+    .simulator-device.device-controller {
+        min-width: unset;
+        flex: unset;
+    }
+
+    /* Monitor ridotto per mobile */
+    .monitor-frame {
+        max-width: 340px;
+    }
+
+    /* Phone frame leggermente più piccolo */
+    .phone-frame {
+        width: 220px;
+        height: 440px;
+    }
+
+    /* --- Timeline / process grid --- */
+    .process-steps-grid {
+        grid-template-columns: 1fr;
+        gap: 4vh;
+    }
+
+    /* --- Installation gallery --- */
+    .installation-gallery {
+        grid-template-columns: 1fr;
+        gap: 3vh;
+    }
+
+    /* --- Lyrics / marquee section --- */
+    .lyrics-bg-text {
+        font-size: clamp(5rem, 20vw, 9rem);
+    }
+
+    /* --- Process cards --- */
+    .process-card {
+        padding: 2rem 1.5rem;
+    }
+
+    /* --- Code analysis cards --- */
+    .code-analysis-card {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        padding-bottom: 3rem;
+    }
+
+    .code-editor-mock {
+        font-size: 0.72rem;
+    }
+
+    /* --- Simulator legend --- */
+    .simulator-legend {
+        flex-direction: column;
+        gap: 1.5vh;
+        align-items: flex-start;
+    }
+
+    /* --- Footer --- */
+    .site-footer {
+        padding: 6vh 5vw 5vh;
+    }
+
+    .footer-title {
+        font-size: 1.4rem;
+    }
+
+    .footer-brand {
+        margin-bottom: 2rem;
+    }
+}
+
+/* ==========================================================================
+   MOBILE RESPONSIVE — 480px e inferiori (smartphone piccoli)
+   ========================================================================== */
+
+@media (max-width: 480px) {
+
+    /* --- Hero title ancora più compatto --- */
+    .hero-title {
+        font-size: clamp(2.2rem, 13vw, 3.2rem);
+    }
+
+    .hero-content {
+        margin-top: 0;
+    }
+
+    /* --- Sezioni con meno padding laterale --- */
+    .section-container {
+        padding: 7vh 4vw;
+    }
+
+    /* Monitor ancor più piccolo */
+    .monitor-frame {
+        max-width: 100%;
+    }
+
+    /* Phone frame compatto */
+    .phone-frame {
+        width: 190px;
+        height: 390px;
+        border-radius: 28px;
+    }
+
+    /* --- Testo corpo: giustificazione disattivata per leggibilità --- */
+    .text-column p {
+        text-align: left;
+    }
+
+    /* --- Titolo sezione vibe coding --- */
+    .editorial-heading {
+        font-size: clamp(1.6rem, 8vw, 2.2rem);
+    }
+
+    /* --- Card codice: padding ridotto --- */
+    .code-card-explanation {
+        padding: 1.5rem 1.2rem;
+    }
+
+    /* --- Action button: full-width --- */
+    .action-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* --- Footer brand --- */
+    .footer-title {
+        font-size: 1.2rem;
+        letter-spacing: -0.02em;
+    }
+
+    .footer-copy,
+    .footer-license {
+        font-size: 0.65rem;
+    }
+}
