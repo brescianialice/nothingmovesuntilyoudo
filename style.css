@@ -80,6 +80,7 @@ html {
     font-size: 16px;
     background-color: var(--color-bg);
     overflow-x: hidden;
+    max-width: 100%;
 }
 
 body {
@@ -90,7 +91,8 @@ body {
     line-height: 1.62;
     letter-spacing: -0.01em;
     overflow-x: hidden;
-    max-width: 100vw;
+    max-width: 100%;
+    width: 100%;
     transition: background-color 0.5s ease, color 0.5s ease;
 }
 
@@ -280,6 +282,9 @@ h1, h2, h3, h4, h5, h6 {
     padding: 12vh 8vw;
     border-bottom: 1px solid var(--color-border);
     position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+    max-width: 100%;
 }
 
 .dark-strip {
@@ -325,6 +330,16 @@ h1, h2, h3, h4, h5, h6 {
     gap: 8vw;
     max-width: 1400px;
     margin: 0 auto;
+}
+
+/* Variante 2 colonne asimmetriche (es. testo + foto) */
+.section-layout-2col {
+    grid-template-columns: 1.8fr 1.2fr;
+}
+
+/* Process card a larghezza piena su desktop */
+.process-card-wide {
+    grid-column: span 2;
 }
 
 .lead-paragraph {
@@ -1204,6 +1219,8 @@ h1, h2, h3, h4, h5, h6 {
     overflow: hidden;
     box-shadow: var(--shadow-subtle);
     width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .editor-bar {
@@ -1237,12 +1254,15 @@ h1, h2, h3, h4, h5, h6 {
 .code-editor-mock pre {
     margin: 0;
     padding: 20px;
-    overflow-x: auto;
+    overflow-x: auto;        /* scroll dentro il box, non espande la pagina */
+    max-width: 100%;
+    box-sizing: border-box;
     font-family: var(--font-mono);
     font-size: 0.78rem;
     line-height: 1.55;
     color: #e0e0e0;
     text-align: left;
+    word-break: break-word;
 }
 
 /* Light theme overrides for code editor */

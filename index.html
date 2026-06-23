@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="it" data-theme="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NOTHING MOVES UNTIL YOU DO — Alice Zoe Bresciani</title>
-    <meta name="description" content="Nothing Moves Until You Do: Installazione artistica multi-dispositivo sul doom scrolling e la stanchezza digitale notturna. Progetto di Alice Zoe Bresciani.">
+    <meta name="description"
+        content="Nothing Moves Until You Do: Installazione artistica multi-dispositivo sul doom scrolling e la stanchezza digitale notturna. Progetto di Alice Zoe Bresciani.">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Prata&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Prata&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
     <!-- Main CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <!-- Tactile Theme Toggle -->
@@ -29,38 +34,49 @@
             </video>
             <div class="video-overlay"></div>
         </div>
-        
+
         <div class="hero-content">
-            
+
             <h1 class="hero-title">NOTHING MOVES<br>UNTIL YOU DO</h1>
-            
-            <p class="hero-subtitle">Installazione artistica multi-dispositivo coordinata in tempo reale sul doom scrolling e la stanchezza digitale notturna.</p>
-            
+
+            <p class="hero-subtitle">Installazione artistica multi-dispositivo coordinata in tempo reale sul doom
+                scrolling e la stanchezza digitale notturna.</p>
+
             <div class="hero-scroll-indicator">
                 <span class="scroll-arrow">↓</span>
-                <span class="scroll-text">ESPLORA IL PROGETTO</span>
+                <span class="scroll-text"></span>
             </div>
         </div>
     </header>
 
     <!-- Main Content -->
     <main>
-        
+
         <!-- Section 1: Concept & Fragilità -->
         <section id="concept" class="section-container">
             <div class="section-layout-editorial">
                 <div class="left-col">
                     <h2 class="editorial-heading">Fragilità e ambiente estremo.</h2>
                     <div class="quote-card">
-                        <p class="quote-text">«La fragilità, cioè la propensione a rompersi, è diversa dalla mancanza di forza, la debolezza.»</p>
+                        <p class="quote-text">«La fragilità, cioè la propensione a rompersi, è diversa dalla mancanza di
+                            forza, la debolezza.»</p>
                     </div>
                 </div>
                 <div class="right-col text-column">
-                    <p class="lead-paragraph"><span class="drop-cap">U</span>n contesto nel quale le fragilità di una persona o di un gruppo di persone vengono esasperate, può essere considerato un ambiente estremo. Il nostro presente digitale, vissuto nello spazio isolato delle ore notturne, rappresenta esattamente questo genere di ambiente.</p>
-                    
-                    <p>L'opera esplora il tema del <strong>doom scrolling</strong>: la fragilità del corpo che si arrende. Il corpo che si abbandona allo scorrimento compulsivo dello schermo, spesso di notte, spesso di fronte a contenuti che fanno male ma da cui non ci si riesce a staccare.</p>
-                    
-                    <p>Il progetto non parla del doom scrolling in sé, ma di quel momento prima della soglia, lo stato liminale in cui il corpo è ancora sveglio ma la mente è già altrove. Lo schermo dello smartphone, in questa penombra sospesa, cessa di essere un mero strumento e diventa quasi un <em>oggetto transizionale</em>, analogo al peluche del bambino: un appiglio fisico che media l'angoscia del vuoto prima del sonno.</p>
+                    <p class="lead-paragraph"><span class="drop-cap">U</span>n contesto nel quale le fragilità di una
+                        persona o di un gruppo di persone vengono esasperate, può essere considerato un ambiente
+                        estremo. Il nostro presente digitale, vissuto nello spazio isolato delle ore notturne,
+                        rappresenta esattamente questo genere di ambiente.</p>
+
+                    <p>L'opera esplora il tema del <strong>doom scrolling</strong>: la fragilità del corpo che si
+                        arrende. Il corpo che si abbandona allo scorrimento compulsivo dello schermo, spesso di notte,
+                        spesso di fronte a contenuti che fanno male ma da cui non ci si riesce a staccare.</p>
+
+                    <p>Il progetto non parla del doom scrolling in sé, ma di quel momento prima della soglia, lo stato
+                        liminale in cui il corpo è ancora sveglio ma la mente è già altrove. Lo schermo dello
+                        smartphone, in questa penombra sospesa, cessa di essere un mero strumento e diventa quasi un
+                        <em>oggetto transizionale</em>, analogo al peluche del bambino: un appiglio fisico che media
+                        l'angoscia del vuoto prima del sonno.</p>
                 </div>
             </div>
         </section>
@@ -71,15 +87,19 @@
                 <div class="simulator-intro">
                     <h2 class="editorial-heading">L'Architettura di Sistema</h2>
                     <p class="text-column">
-                        L'installazione si fonda su una relazione asimmetrica tra due dispositivi collegati tramite il protocollo <strong>MQTT (WebSockets)</strong>. Sotto, puoi sperimentare l'interazione tra la <strong>Proiezione</strong> (lo schermo condiviso che satura lo spazio) e il <strong>Controller</strong> (il tuo smartphone, qui simulato). 
+                        L'installazione si fonda su una relazione asimmetrica tra due dispositivi collegati tramite il
+                        protocollo <strong>MQTT (WebSockets)</strong>. Sotto, puoi sperimentare l'interazione tra la
+                        <strong>Proiezione</strong> (lo schermo condiviso che satura lo spazio) e il
+                        <strong>Controller</strong> (il tuo smartphone, qui simulato).
                         <br><br>
-                        <em>Trascina il pollice verso l'alto (swipe up) sul Controller simulato per avanzare nel feed della Proiezione.</em>
+                        <em>Trascina il pollice verso l'alto (swipe up) sul Controller simulato per avanzare nel feed
+                            della Proiezione.</em>
                     </p>
                 </div>
 
                 <!-- Dual device simulator grid -->
                 <div class="interactive-simulator-container">
-                    
+
                     <!-- Left: Projection Screen (Desktop Monitor Mockup) -->
                     <div class="simulator-device device-projection">
                         <div class="device-label">LA PROIEZIONE (Schermo Principale)</div>
@@ -103,7 +123,7 @@
                         <div class="phone-frame">
                             <div class="phone-screen" id="phone-trackpad">
                                 <div class="phone-notch"></div>
-                                
+
                                 <div class="controller-content">
                                     <div class="connection-status">
                                         <span class="status-dot pulsing"></span>
@@ -112,7 +132,8 @@
 
                                     <div class="trackpad-area">
                                         <div class="swipe-indicator">↑</div>
-                                        <div class="trackpad-instructions" id="trackpad-instruction-text">SWIPE UP PER SCORRERE</div>
+                                        <div class="trackpad-instructions" id="trackpad-instruction-text">SWIPE UP PER
+                                            SCORRERE</div>
                                     </div>
 
                                     <div class="controller-stats">
@@ -123,7 +144,7 @@
 
                                 <!-- Floating Whispers Layer -->
                                 <div class="whisper-overlay" id="whisper-overlay"></div>
-                                
+
                                 <!-- Ripple Effect Canvas/Container -->
                                 <div class="ripple-container" id="ripple-container"></div>
                             </div>
@@ -136,7 +157,8 @@
                 <div class="simulator-legend">
                     <div class="legend-item">
                         <span class="legend-key">INTERAZIONE:</span>
-                        <span class="legend-val">Trascina verticalmente all'interno dello schermo del telefono per simulare gli swipe.</span>
+                        <span class="legend-val">Trascina verticalmente all'interno dello schermo del telefono per
+                            simulare gli swipe.</span>
                     </div>
                     <div class="legend-item">
                         <span class="legend-key">AUDIO STACKING:</span>
@@ -151,16 +173,21 @@
         <section id="timeline" class="section-container">
             <h2 class="editorial-heading block-title">La Timeline Narrativa</h2>
             <p class="process-sub-heading text-column">
-                Il feed dell'installazione non è casuale: è strutturato su una timeline rigida che si sviluppa e si degrada progressivamente man mano che l'utente compie i 26 swipe a sua disposizione.
+                Il feed dell'installazione non è casuale: è strutturato su una timeline rigida che si sviluppa e si
+                degrada progressivamente man mano che l'utente compie i 26 swipe a sua disposizione.
             </p>
-            
+
             <div class="process-steps-grid">
-                
+
                 <!-- Phase 1 -->
                 <div class="process-card">
                     <div class="card-num">FASE 1</div>
                     <h3 class="card-title">Il Doom Scrolling Notturno</h3>
-                    <p class="card-desc">Una sequenza sequenziale di 23 video locali (nominati come file esportati direttamente da chat WhatsApp) viene proiettata a ritmo incalzante. Le immagini scorrono freneticamente, intervallate da scritte spettrali in sovrimpressione che riecheggiano l'alienazione dello schermo ("you are still awake", "just one more swipe", "scrolling is an illusion").</p>
+                    <p class="card-desc">Una sequenza sequenziale di 23 video locali (nominati come file esportati
+                        direttamente da chat WhatsApp) viene proiettata a ritmo incalzante. Le immagini scorrono
+                        freneticamente, intervallate da scritte spettrali in sovrimpressione che riecheggiano
+                        l'alienazione dello schermo ("you are still awake", "just one more swipe", "scrolling is an
+                        illusion").</p>
                     <div class="card-image-holder">
                         <img src="sorgenti/1 (2).jpg" alt="Fase 1: Interfaccia e Video Feed">
                     </div>
@@ -170,17 +197,24 @@
                 <div class="process-card">
                     <div class="card-num">FASE 2</div>
                     <h3 class="card-title">Il Corpo Svuotato</h3>
-                    <p class="card-desc">Allo scoccare del 24esimo scroll, i video spariscono bruscamente dalla proiezione. Lo schermo diventa una distesa nera, ospitando esclusivamente scritte minimali che invitano lo spettatore a fermare l'interazione ed abitare il silenzio ("battery depleted", "body depleted", "there is no next video").</p>
+                    <p class="card-desc">Allo scoccare del 24esimo scroll, i video spariscono bruscamente dalla
+                        proiezione. Lo schermo diventa una distesa nera, ospitando esclusivamente scritte minimali che
+                        invitano lo spettatore a fermare l'interazione ed abitare il silenzio ("battery depleted", "body
+                        depleted", "there is no next video").</p>
                     <div class="card-image-holder">
                         <img src="sorgenti/1 (1).jpg" alt="Fase 2: Svuotamento e Nero">
                     </div>
                 </div>
 
                 <!-- Phase 3 -->
-                <div class="process-card" style="grid-column: span 2;">
+                <div class="process-card process-card-wide">
                     <div class="card-num">FASE 3</div>
                     <h3 class="card-title">Il Drift / L'Abbandono</h3>
-                    <p class="card-desc">Raggiunto il limite invalicabile di 26 scroll, l'installazione si scollega deliberatamente dall'input del controller mobile. Il sistema si appropria del controllo, avviando un fade-out automatico di 9 secondi verso il buio e il silenzio assoluto. Lo spettatore viene lasciato dinanzi al vuoto. Solo dopo questo tempo, la stanza si resetta per l'utente successivo.</p>
+                    <p class="card-desc">Raggiunto il limite invalicabile di 26 scroll, l'installazione si scollega
+                        deliberatamente dall'input del controller mobile. Il sistema si appropria del controllo,
+                        avviando un fade-out automatico di 9 secondi verso il buio e il silenzio assoluto. Lo spettatore
+                        viene lasciato dinanzi al vuoto. Solo dopo questo tempo, la stanza si resetta per l'utente
+                        successivo.</p>
                     <div class="installation-gallery">
                         <div class="gallery-item">
                             <img src="sorgenti/FOTO INSTALLAZIONE.jpeg" alt="Fase 3: Allestimento Legatoria">
@@ -202,36 +236,52 @@
                 <div class="left-col">
                     <h2 class="editorial-heading">Comparto Sonoro Procedurale</h2>
                     <div class="quote-card">
-                        <p class="quote-text">«Il suono deve attirare a guardare su. Uno sciame caotico e saturo che mima il collasso fisico.»</p>
+                        <p class="quote-text">«Il suono deve attirare a guardare su. Uno sciame caotico e saturo che
+                            mima il collasso fisico.»</p>
                     </div>
                 </div>
                 <div class="right-col text-column">
                     <h3 class="card-title">Accavallamento Infinito (Audio Stacking)</h3>
-                    <p>A livello acustico, l'avanzamento tra i video non interrompe la sorgente precedente. Quando l'utente esegue uno swipe, il video appena passato non si ferma, ma rimane attivo in background con un volume ridotto (<strong>0.32</strong>). Man mano che si procede, i canali audio si sommano l'uno sull'altro creando una stratificazione cacofonica ed estremamente alienante.</p>
-                    
+                    <p>A livello acustico, l'avanzamento tra i video non interrompe la sorgente precedente. Quando
+                        l'utente esegue uno swipe, il video appena passato non si ferma, ma rimane attivo in background
+                        con un volume ridotto (<strong>0.32</strong>). Man mano che si procede, i canali audio si
+                        sommano l'uno sull'altro creando una stratificazione cacofonica ed estremamente alienante.</p>
+
                     <h3 class="card-title">Degradazione Progressiva</h3>
-                    <p>Più l'utente procede lungo la timeline degli scroll, più i parametri del drone sonoro cambiano in tempo reale: la tonalità si fa cupa, il volume del respiro aumenta e la frequenza dell'oscillatore LFO rallenta gradualmente fino a toccare i <strong>0.09 Hz</strong>, simulando plasticamente il rallentamento del battito cardiaco e l'esaurimento delle energie del corpo.</p>
+                    <p>Più l'utente procede lungo la timeline degli scroll, più i parametri del drone sonoro cambiano in
+                        tempo reale: la tonalità si fa cupa, il volume del respiro aumenta e la frequenza
+                        dell'oscillatore LFO rallenta gradualmente fino a toccare i <strong>0.09 Hz</strong>, simulando
+                        plasticamente il rallentamento del battito cardiaco e l'esaurimento delle energie del corpo.</p>
                 </div>
             </div>
         </section>
 
         <!-- Section 5: Architettura del Controller -->
         <section id="controller-spec" class="section-container">
-            <div class="section-layout-editorial" style="grid-template-columns: 1.8fr 1.2fr;">
+            <div class="section-layout-editorial section-layout-2col">
                 <div class="left-col text-column">
                     <h2 class="editorial-heading">Architettura del Controller</h2>
-                    <p class="lead-paragraph">Il modulo mobile trasforma lo smartphone in uno strumento intimo e tattile, focalizzato esclusivamente sul gesto meccanico dello swipe.</p>
-                    
+                    <p class="lead-paragraph">Il modulo mobile trasforma lo smartphone in uno strumento intimo e
+                        tattile, focalizzato esclusivamente sul gesto meccanico dello swipe.</p>
+
                     <h3 class="card-title">Parsing dei Gesti ed Empatia d'Interfaccia</h3>
-                    <p>Il sistema rileva il delta verticale (ΔY) del tocco. Uno swipe verso l'alto invia via MQTT il segnale di avanzamento. Ad ogni interazione, viene generata un'onda concentrica (ripple) sullo schermo e viene attivata la vibrazione fisica del telefono (<code>navigator.vibrate(15)</code>) per restituire un feedback aptico continuo.</p>
-                    
+                    <p>Il sistema rileva il delta verticale (ΔY) del tocco. Uno swipe verso l'alto invia via MQTT il
+                        segnale di avanzamento. Ad ogni interazione, viene generata un'onda concentrica (ripple) sullo
+                        schermo e viene attivata la vibrazione fisica del telefono (<code>navigator.vibrate(15)</code>)
+                        per restituire un feedback aptico continuo.</p>
+
                     <h3 class="card-title">I Sussurri Poetici (Pensieri della Stanza)</h3>
-                    <p>Mentre lo spettatore interagisce nel buio, il controller visualizza frasi fluttuanti a bassissimo contrasto, che compaiono ogni 16 secondi o con il 20% di probabilità ad ogni swipe. Sono pensieri disillusi ed intimi legati alla stanchezza notturna.</p>
-                    
+                    <p>Mentre lo spettatore interagisce nel buio, il controller visualizza frasi fluttuanti a bassissimo
+                        contrasto, che compaiono ogni 16 secondi o con il 20% di probabilità ad ogni swipe. Sono
+                        pensieri disillusi ed intimi legati alla stanchezza notturna.</p>
+
                     <h3 class="card-title">Il Blocco Finale</h3>
-                    <p>Al ventiseiesimo scroll, il controller si blocca in uno stato terminale (<code>final-state</code>). Le funzionalità di swipe e i sussurri poetici vengono rimossi, mostrando a schermo la frase definitiva: <strong>"nothing moves until you do"</strong>. Dopo 10 secondi, la pagina esegue un refresh automatico per riavviare il loop espositivo.</p>
+                    <p>Al ventiseiesimo scroll, il controller si blocca in uno stato terminale
+                        (<code>final-state</code>). Le funzionalità di swipe e i sussurri poetici vengono rimossi,
+                        mostrando a schermo la frase definitiva: <strong>"nothing moves until you do"</strong>. Dopo 10
+                        secondi, la pagina esegue un refresh automatico per riavviare il loop espositivo.</p>
                 </div>
-                
+
                 <div class="right-col">
                     <!-- Photo of mobile unit -->
                     <div class="gallery-item" style="aspect-ratio: 9/16; margin-bottom: 2rem;">
@@ -243,7 +293,7 @@
         </section>
 
         <!-- Section 6: I Sussurri Fluttuanti (Aesthetic scroll marquee) -->
-        <section id="whispers-marquee" class="section-container dark-strip lyrics-section" style="padding: 10vh 8vw;">
+        <section id="whispers-marquee" class="section-container dark-strip lyrics-section">
             <div class="lyrics-bg-words">
                 <div class="marquee-track">
                     <span>NOTHING MOVES UNTIL YOU DO</span>
@@ -272,7 +322,10 @@
             <div class="section-layout-editorial" style="grid-template-columns: 1fr;">
                 <div class="full-col text-column">
                     <h2 class="editorial-heading">Il Codice dell'Opera: Vibe Coding</h2>
-                    <p class="lead-paragraph">Il software dell'installazione non è solo infrastruttura, ma parte integrante dell'esperienza estetica. Di seguito vengono analizzati i tre pilastri logici dell'opera, scritti in modalità <strong>vibe coding</strong> (collaborazione espressiva uomo-macchina).</p>
+                    <p class="lead-paragraph">Il software dell'installazione non è solo infrastruttura, ma parte
+                        integrante dell'esperienza estetica. Di seguito vengono analizzati i tre pilastri logici
+                        dell'opera, scritti in modalità <strong>vibe coding</strong> (collaborazione espressiva
+                        uomo-macchina).</p>
                 </div>
             </div>
 
@@ -282,12 +335,18 @@
                     <div class="analysis-text">
                         <span class="spec-number">SPECIFICA 01</span>
                         <h3 class="card-title">Accumulazione Sonora (Audio Stacking)</h3>
-                        <p class="card-desc">Il motore acustico basato su <strong>Web Audio API</strong> gestisce la sovrapposizione dinamica dei canali audio. Ad ogni swipe, il video in riproduzione guadagna il volume massimo, mentre i flussi precedenti non si interrompono ma degradano al 30% del volume, stratificandosi in un drone cacofonico ed alienante. Al raggiungimento del quinto scroll, tutti i canali salgono simultaneamente al 70% per simulare la saturazione sensoriale definitiva.</p>
+                        <p class="card-desc">Il motore acustico basato su <strong>Web Audio API</strong> gestisce la
+                            sovrapposizione dinamica dei canali audio. Ad ogni swipe, il video in riproduzione guadagna
+                            il volume massimo, mentre i flussi precedenti non si interrompono ma degradano al 30% del
+                            volume, stratificandosi in un drone cacofonico ed alienante. Al raggiungimento del quinto
+                            scroll, tutti i canali salgono simultaneamente al 70% per simulare la saturazione sensoriale
+                            definitiva.</p>
                     </div>
                     <div class="analysis-code">
                         <div class="code-editor-mock">
                             <div class="editor-bar">
-                                <span class="editor-dot"></span><span class="editor-dot"></span><span class="editor-dot"></span>
+                                <span class="editor-dot"></span><span class="editor-dot"></span><span
+                                    class="editor-dot"></span>
                                 <span class="editor-filename">audio-engine.js</span>
                             </div>
                             <pre><code>function handleAudioTrigger(idx) {
@@ -316,12 +375,18 @@
                     <div class="analysis-text">
                         <span class="spec-number">SPECIFICA 02</span>
                         <h3 class="card-title">Lo Stato Liminale (Velocity Detection)</h3>
-                        <p class="card-desc">Il loop principale analizza in tempo reale la velocità dello scroll dell'utente calcolando il delta di spostamento verticale pixel/tempo. Se lo scroll rallenta scendendo sotto la soglia critica di <strong>10 pixel al secondo</strong>, l'installazione rileva uno stato liminale del corpo (la sonnolenza o l'inerzia notturna) e dissolve l'interfaccia in un filtro grayscale a luminosità dimezzata, rappresentando visivamente l'abbandono fisico e lo spegnimento della mente.</p>
+                        <p class="card-desc">Il loop principale analizza in tempo reale la velocità dello scroll
+                            dell'utente calcolando il delta di spostamento verticale pixel/tempo. Se lo scroll rallenta
+                            scendendo sotto la soglia critica di <strong>10 pixel al secondo</strong>, l'installazione
+                            rileva uno stato liminale del corpo (la sonnolenza o l'inerzia notturna) e dissolve
+                            l'interfaccia in un filtro grayscale a luminosità dimezzata, rappresentando visivamente
+                            l'abbandono fisico e lo spegnimento della mente.</p>
                     </div>
                     <div class="analysis-code">
                         <div class="code-editor-mock">
                             <div class="editor-bar">
-                                <span class="editor-dot"></span><span class="editor-dot"></span><span class="editor-dot"></span>
+                                <span class="editor-dot"></span><span class="editor-dot"></span><span
+                                    class="editor-dot"></span>
                                 <span class="editor-filename">velocity-loop.js</span>
                             </div>
                             <pre><code>function updateLoop(timestamp) {
@@ -352,12 +417,18 @@
                     <div class="analysis-text">
                         <span class="spec-number">SPECIFICA 03</span>
                         <h3 class="card-title">Dislocazione Hard Datamosh</h3>
-                        <p class="card-desc">L'avanzamento compulsivo della pagina applica un filtro di distorsione distruttiva (displacement map) basato su un filtro SVG vettoriale. La coordinazione geometrica deforma l'immagine con scale di displacement fino a <strong>500 unità</strong>, abbinate a rotazioni di colore (hue-rotate) e jittering geometrico randomico ad ogni fotogramma. Maggiore è lo scroll cumulativo, maggiore è la disintegrazione del feed WhatsApp, mimando il sovraccarico digitale.</p>
+                        <p class="card-desc">L'avanzamento compulsivo della pagina applica un filtro di distorsione
+                            distruttiva (displacement map) basato su un filtro SVG vettoriale. La coordinazione
+                            geometrica deforma l'immagine con scale di displacement fino a <strong>500 unità</strong>,
+                            abbinate a rotazioni di colore (hue-rotate) e jittering geometrico randomico ad ogni
+                            fotogramma. Maggiore è lo scroll cumulativo, maggiore è la disintegrazione del feed
+                            WhatsApp, mimando il sovraccarico digitale.</p>
                     </div>
                     <div class="analysis-code">
                         <div class="code-editor-mock">
                             <div class="editor-bar">
-                                <span class="editor-dot"></span><span class="editor-dot"></span><span class="editor-dot"></span>
+                                <span class="editor-dot"></span><span class="editor-dot"></span><span
+                                    class="editor-dot"></span>
                                 <span class="editor-filename">datamosh-distortion.js</span>
                             </div>
                             <pre><code>// Modulazione intensiva del filtro SVG
@@ -383,12 +454,18 @@ videoElements.forEach((v, index) => {
                     <div class="analysis-text">
                         <span class="spec-number">SPECIFICA 04</span>
                         <h3 class="card-title">Sincronizzazione Remota (MQTT over WebSockets)</h3>
-                        <p class="card-desc">Nel file <code>controller.js</code> dell'esame del secondo anno, lo smartphone si connette al broker MQTT pubblico. Genera un identificativo univoco (<code>clientId</code>) e si iscrive a un canale specifico basato sul codice stanza. Ogni volta che l'utente effettua uno swipe, lo smartphone invia istantaneamente un pacchetto dati (JSON) che dice alla proiezione di avanzare nei video, garantendo una reattività immediata senza server locali complessi.</p>
+                        <p class="card-desc">Nel file <code>controller.js</code> dell'esame del secondo anno, lo
+                            smartphone si connette al broker MQTT pubblico. Genera un identificativo univoco
+                            (<code>clientId</code>) e si iscrive a un canale specifico basato sul codice stanza. Ogni
+                            volta che l'utente effettua uno swipe, lo smartphone invia istantaneamente un pacchetto dati
+                            (JSON) che dice alla proiezione di avanzare nei video, garantendo una reattività immediata
+                            senza server locali complessi.</p>
                     </div>
                     <div class="analysis-code">
                         <div class="code-editor-mock">
                             <div class="editor-bar">
-                                <span class="editor-dot"></span><span class="editor-dot"></span><span class="editor-dot"></span>
+                                <span class="editor-dot"></span><span class="editor-dot"></span><span
+                                    class="editor-dot"></span>
                                 <span class="editor-filename">controller.js</span>
                             </div>
                             <pre><code>function connectMQTT() {
@@ -418,12 +495,18 @@ videoElements.forEach((v, index) => {
                     <div class="analysis-text">
                         <span class="spec-number">SPECIFICA 05</span>
                         <h3 class="card-title">Sintesi Sonora Binaurale e Respiro Procedurale</h3>
-                        <p class="card-desc">Nel file <code>projection.js</code>, l'audio non è registrato, ma sintetizzato matematicamente. Vengono creati due oscillatori sinusoidali a frequenze vicinissime (<strong>55.0 Hz</strong> e <strong>55.4 Hz</strong>). La minima differenza genera un "battito binaurale" a 0.4 Hz, una frequenza che induce rilassamento cerebrale (onde delta). Contemporaneamente, un generatore di rumore bianco filtrato viene modulato da un oscillatore LFO a 0.15 Hz, ricreando il suono del respiro umano a riposo.</p>
+                        <p class="card-desc">Nel file <code>projection.js</code>, l'audio non è registrato, ma
+                            sintetizzato matematicamente. Vengono creati due oscillatori sinusoidali a frequenze
+                            vicinissime (<strong>55.0 Hz</strong> e <strong>55.4 Hz</strong>). La minima differenza
+                            genera un "battito binaurale" a 0.4 Hz, una frequenza che induce rilassamento cerebrale
+                            (onde delta). Contemporaneamente, un generatore di rumore bianco filtrato viene modulato da
+                            un oscillatore LFO a 0.15 Hz, ricreando il suono del respiro umano a riposo.</p>
                     </div>
                     <div class="analysis-code">
                         <div class="code-editor-mock">
                             <div class="editor-bar">
-                                <span class="editor-dot"></span><span class="editor-dot"></span><span class="editor-dot"></span>
+                                <span class="editor-dot"></span><span class="editor-dot"></span><span
+                                    class="editor-dot"></span>
                                 <span class="editor-filename">projection.js</span>
                             </div>
                             <pre><code>function initWebAudio() {
@@ -470,7 +553,8 @@ videoElements.forEach((v, index) => {
                 <p class="footer-license">
                     Typeface: <strong>Clash Display</strong> by Indian Type Foundry (ITF) —
                     free for personal &amp; commercial use under the
-                    <a href="https://www.fontshare.com/fonts/clash-display" target="_blank" rel="noopener" class="footer-link">Fontshare Free License</a>.
+                    <a href="https://www.fontshare.com/fonts/clash-display" target="_blank" rel="noopener"
+                        class="footer-link">Fontshare Free License</a>.
                 </p>
 
             </div>
@@ -481,4 +565,5 @@ videoElements.forEach((v, index) => {
     <!-- Main JavaScript -->
     <script src="script.js"></script>
 </body>
+
 </html>
